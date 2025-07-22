@@ -12,7 +12,7 @@ Mục đích của bước này là thực hiện tra cứu Whois để thu th�
 - **Nhà đăng ký (Registrar)**: CSC Corporate Domains, Inc.
 - **Whois Server**: `whois.corporatedomains.com`
 - **Website quản lý**: `http://cscdbs.com`
-- **Email abuse**: `domainabuse@cscglobal.com`
+- **Email**: `domainabuse@cscglobal.com`
 - **SĐT liên hệ**: `888-780-2723`
 
 
