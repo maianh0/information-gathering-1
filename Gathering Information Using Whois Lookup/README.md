@@ -2,7 +2,8 @@
 # Thu thập thông tin với Whois – united.com
 
 ## Mục tiêu
-Mục đích của bước này là thực hiện tra cứu Whois để thu thập các thông tin công khai liên quan đến tên miền `united.com`.
+- **Thực hiện tra cứu Whois để thu thập các thông tin công khai liên quan đến tên miền `united.com`.**
+- **Sử dụng website https://whois.domaintools.com/ để tra cứu domain**
 
 
 ## Thông tin tra cứu được
