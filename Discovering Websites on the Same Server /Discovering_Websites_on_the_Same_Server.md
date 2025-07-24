@@ -30,17 +30,17 @@ Phân tích các website đang được lưu trữ trên cùng một địa ch�
 > Tên miền dường như không chia sẻ hosting với domain nào khác – có thể do sử dụng CDN hoặc cấu hình riêng biệt.
 
 
-## 🛡️ Phân tích & nhận định
+## Phân tích & nhận định
 
 | Yếu tố                         | Kết luận                        |
 |--------------------------------|----------------------------------|
-| IP chia sẻ hosting             | ❌ Không có domain khác được ghi nhận |
-| Sử dụng CDN (Akamai)           | ✅ Có                           |
-| Bảo mật qua phân tách tài nguyên | ✅ Ổn định và an toàn             |
+| IP chia sẻ hosting             | Không có domain khác được ghi nhận |
+| Sử dụng CDN (Akamai)           | Có                           |
+| Bảo mật qua phân tách tài nguyên | Ổn định và an toàn             |
 
 
 
-## ✅ Kết luận
+## Kết luận
 Dựa trên kết quả từ `viewdns.info` và `dnslytics.com`, không phát hiện domain nào khác cùng chia sẻ IP với `united.com`. Điều này cho thấy tên miền đang sử dụng **môi trường hạ tầng riêng biệt** hoặc **CDN cấu hình chuyên biệt**, giúp tăng cường bảo mật và chống phân tích ngược.
 
 
