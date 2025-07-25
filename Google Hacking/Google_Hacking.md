@@ -1,7 +1,7 @@
 # Google Hacking – united.com
 
 **Thực hiện**: Mai Anh  
-**Cập nhật lần cuối**: 24/07/2025
+**Cập nhật lần cuối**: 25/07/2025
 
 ---
 
@@ -37,6 +37,37 @@ Mục tiêu gồm:
 | 4   | `site:united.com intitle:"index of"`| Tìm thư mục lộ cấu trúc thư mục (index)         |
 
 
+
+### 2.2 Truy vấn Google Dork nâng cao
+
+Google hỗ trợ nhiều toán tử tìm kiếm giúp mở rộng phạm vi phát hiện tài nguyên ẩn hoặc bị rò rỉ:
+
+| Toán tử Dork        | Mục đích                                                      | Ví dụ                                                  |
+|---------------------|---------------------------------------------------------------|---------------------------------------------------------|
+| `site:`             | Giới hạn kết quả trong một domain                             | `site:united.com`                                      |
+| `inurl:`            | Tìm từ khóa trong URL                                         | `inurl:admin site:united.com`                          |
+| `intitle:`          | Tìm từ khóa trong tiêu đề trang                               | `intitle:"index of" site:united.com`                   |
+| `filetype:` / `ext:`| Tìm file theo đuôi mở rộng                                     | `filetype:env site:united.com`                         |
+| `cache:`            | Xem bản cache của Google                                      | `cache:united.com`                                     |
+| `intext:`           | Tìm từ khóa trong nội dung trang                              | `intext:"confidential" site:united.com`                |
+| `allinurl:`         | Tìm tất cả từ khóa trong URL                                  | `allinurl:login user site:united.com`                  |
+| `allintitle:`       | Tìm tất cả từ trong tiêu đề trang                             | `allintitle:dashboard admin site:united.com`           |
+| `"..."`             | Tìm cụm chính xác (exact match)                               | `"index of /admin"`                                    |
+| `OR`                | Kết hợp nhiều điều kiện                                        | `ext:sql OR ext:env site:united.com`                   |
+
+#### Một số truy vấn tiêu biểu:
+
+```plaintext
+site:united.com ext:sql OR ext:env OR ext:bak
+site:united.com intitle:"index of /"
+site:*.united.com inurl:login
+site:united.com intext:"DB_PASSWORD"
+site:united.com filetype:log
+```
+
+> Những truy vấn nâng cao giúp tăng khả năng phát hiện các tệp tin, endpoint và subdomain tiềm ẩn có thể bị lộ do cấu hình sai.
+
+
 ## 3. Kết quả phân tích
 
 - **Tất cả truy vấn đều không trả về kết quả**
@@ -59,4 +90,3 @@ Mục tiêu gồm:
 
 Website `united.com` **không để lộ các tài nguyên nhạy cảm** qua Google Search.  
 Không có chỉ mục `.env`, `.sql`, thư mục mở hay trang quản trị hiển thị công khai.
-
