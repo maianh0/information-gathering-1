@@ -1,7 +1,7 @@
 # Discovering Subdomains – united.com
 
 **Thực hiện**: Mai Anh  
-**Cập nhật lần cuối**: 24/07/2025
+**Cập nhật lần cuối**: 25/07/2025
 
 
 ## Mục lục
@@ -12,7 +12,6 @@
     - [2.2 Truy vấn thực hiện](#22-truy-vấn-thực-hiện)  
     - [2.3 Mục tiêu tìm kiếm](#23-mục-tiêu-tìm-kiếm)  
 3. [Kết quả phát hiện](#3-kết-quả-phát-hiện)  
-4. [Kết luận](#4-kết-luận)
 
 
 ## 1. Mục tiêu
@@ -25,6 +24,7 @@ Xác định các subdomain (tên miền phụ) thuộc `united.com` nhằm mở
 
 - **Google Dorking** – thông qua Google Search
 - **Sublist3r** – công cụ Python thu thập subdomain từ nhiều nguồn OSINT
+- **dnsenum** - công cụ Perl hỗ trợ dò DNS, subdomain, MX record, brute-force và zone transfer.
 
 ### 2.2 Truy vấn thực hiện
 - **GoogLe Dorking**
@@ -42,7 +42,10 @@ pip3 install -r requirements.txt --break-system-packages
 ```bash
 python3 sublist3r.py -d united.com -o subdomains.txt
 ```
-
+- **Dnsenum**
+```bash
+dnsenum united.com
+```
 ### 2.3 Mục tiêu tìm kiếm
 
 Tìm kiếm tất cả các subdomain có đuôi `.united.com` đã được Google lập chỉ mục (indexed), đồng thời kết hợp với công cụ Sublist3r để thu thập sâu hơn từ nhiều nguồn.
@@ -74,9 +77,41 @@ wifigroundportal.united.com
 
 > *Danh sách đầy đủ được lưu trong file `subdomains.txt`. Việc kết hợp nhiều công cụ đã giúp thu được tập subdomain phong phú và chính xác hơn.*
 
----
+Kết quả nhận được khi dùng Dnsenum
+#### 1. Host's Address:
+- united.com → **23.207.182.77**
 
-## 4. Kết luận
+#### 2. Name Servers:
+Sử dụng DNS của **Akamai CDN**:
+- a18-67.akam.net → 95.101.36.67  
+- a11-66.akam.net → 84.53.139.66  
+- a5-65.akam.net → 95.100.168.65  
+- a10-65.akam.net → 96.7.50.65  
+- a26-64.akam.net → 23.74.25.64  
 
-Việc kết hợp Google Dorking và Sublist3r giúp phát hiện nhiều subdomain của `united.com`.
+#### 3. Mail Servers (MX):
+- mxb-00212602.gslb.pphosted.com → 67.231.145.22  
+- mxa-00212602.gslb.pphosted.com → 67.231.145.22  
+
+Cho thấy hệ thống email được quản lý bởi bên thứ ba, có thể là Proofpoint hoặc dịch vụ tương tự.
+
+#### 4. Zone Transfer:
+- Tất cả truy vấn AXFR bị từ chối (REFUSED) → Cấu hình DNS an toàn.
+
+#### 5. Một số subdomain và bản ghi:
+| Subdomain                  | Loại bản ghi | Trỏ đến |
+|----------------------------|---------------|-----------------------------|
+| a.united.com               | A             | 3.110.204.15                |
+| mail.united.com            | A             | 209.87.119.172              |
+| shop.united.com            | A             | 209.87.113.108              |
+| www.united.com             | CNAME         | www-cdn.united.com.edgekey.net |
+| dev.united.com.edgekey.net | CNAME         | CDN Akamai                  |
+
+#### 6. Class C Netranges:
+- 3.110.204.0/24  
+- 23.207.182.0/24  
+- 161.215.209.0/24
+  
+ Có thể sử dụng để **quét thêm IP trong cùng mạng**, xác định hệ thống liên quan đến united.com.
+
 
