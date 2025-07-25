@@ -93,7 +93,7 @@ Sử dụng DNS của **Akamai CDN**:
 - mxb-00212602.gslb.pphosted.com → 67.231.145.22  
 - mxa-00212602.gslb.pphosted.com → 67.231.145.22  
 
-Cho thấy hệ thống email được quản lý bởi bên thứ ba, có thể là Proofpoint hoặc dịch vụ tương tự.
+> Cho thấy hệ thống email được quản lý bởi bên thứ ba, có thể là Proofpoint hoặc dịch vụ tương tự.
 
 #### 4. Zone Transfer:
 - Tất cả truy vấn AXFR bị từ chối (REFUSED) → Cấu hình DNS an toàn.
@@ -112,6 +112,6 @@ Cho thấy hệ thống email được quản lý bởi bên thứ ba, có thể
 - 23.207.182.0/24  
 - 161.215.209.0/24
   
- Có thể sử dụng để **quét thêm IP trong cùng mạng**, xác định hệ thống liên quan đến united.com.
+> Có thể sử dụng để **quét thêm IP trong cùng mạng**, xác định hệ thống liên quan đến united.com.
 
 
